@@ -1,0 +1,75 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- 去扫描下面的包，找到对应的controller组件 -->
+	<context:component-scan base-package="com.xiaol.blog.web.controller" />
+	<!-- 打开spring的MessageConverter功能，用于将返回的数据转成对应的类型，例如json、xml，但是需要添加相关jar依赖 -->
+	<mvc:annotation-driven />
+
+	<bean id="cnManager"
+		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<!-- 通过accept-header匹配，默认false -->
+		<property name="ignoreAcceptHeader" value="false" />
+		<property name="defaultContentType" value="text/html" />
+		<!-- 是否启用扩展名支持，默认为true -->
+		<property name="favorPathExtension" value="false" />
+		<!-- favorParameter是否开启参数支持，默认true -->
+		<property name="favorParameter" value="false" />
+		<!-- parameterName设置参数支持的参数名，例子： /user/{userList}?format=json -->
+		<!-- <property name="parameterName" value="format" /> -->
+		<!-- 候选类型 -->
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html" />
+				<entry key="json" value="application/json" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- 配置freemarker信息 -->
+	<bean id="freemarkerConfig"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/freemarker" />
+	</bean>
+
+	<!-- 内容协商视图处理，按照后缀名、参数、accept-header顺序匹配 -->
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<!-- view返回类型匹配顺序 -->
+		<property name="order" value="0" />
+		<property name="contentNegotiationManager" ref="cnManager" />
+		<property name="viewResolvers">
+			<list>
+				<!-- 配置一个FreeMarkerViewResolver，在list里面可以配置多个ViewResolver -->
+				<bean
+					class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+					<property name="order" value="1" />
+					<!-- 开启缓存，当再次请求时直接拿上次的结果 -->
+					<property name="cache" value="true" />
+					<property name="prefix" value="" />
+					<property name="suffix" value=".ftl" />
+					<!-- 设置返回内容的编码 -->
+					<property name="contentType" value="text/html; charset=utf-8" />
+				</bean>
+			</list>
+		</property>
+		<!-- 当上面的ViewResolver无法处理时，交给defaultViews处理 -->
+		<property name="defaultViews">
+			<list>
+				<!-- 将返回的内容转为json -->
+				<bean
+					class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+</beans>

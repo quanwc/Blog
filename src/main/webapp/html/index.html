@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="..\css\Bootstrap\bootstrap.min.css">
+<link rel="stylesheet" href="..\css\font-awesome.min.css">
+<!-- normalize.css用于重置一些默认样式 -->
+<link rel="stylesheet" href="..\css\normalize.css">
+<!-- clean-style.css扁平化风格，为了减少请求次数，所有样式写在一起 -->
+<link rel="stylesheet" href="..\css\main.css">
+<title>index</title>
+</head>
+<body>
+	<!-- header每个页面都有的头部 -->
+	<header>
+		<div class="bgimg">
+			<!-- nav头部导航栏 -->
+			<nav>
+				<div class="logo">
+					<a href="#">Home</a>
+				</div>
+				<ul>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Admin</a></li>
+					<li id="sidebar_trigger"><a href="#">Meun</a></li>
+				</ul>
+			</nav>
+			<div id="banner">
+				<div class="inner">
+					<h1>Shawn</h1>
+					<p>Hi, welcome to Shawn's blog!</p>
+					<p>博客还没做自适应，请全屏浏览</p>
+					<ul class="list-inline">
+						<li class="btn btn-default btn-lg"><a
+							href="mailto:381519422@qq.com"><i
+								class="fa fa-envelope fa-lg"></i><span> EMAIL</span></a></li>
+						<li class="btn btn-default btn-lg"><a
+							href="https://github.com/Pickacat"><i
+								class="fa fa-github fa-lg"></i><span> GITHUB</span></a></li>
+						<li class="btn btn-default btn-lg"><a
+							href="tencent://message/?uin=381519422&Site=&menu=yes"><i
+								class="fa fa-qq fa-fw"></i><span> QQ</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- 页面内容区 -->
+	<div class="content">
+		<!-- 		<section class="section-one">
+			<div class="wrapper">
+				<div>
+					<h2>一个标题</h2>
+					<hr>
+					<p class="sub-heading">this is a long long long p for test the
+						pbiaoqian ..</p>
+				</div>
+				<div class="icon-group">
+					<span class="icon">item1</span> <span class="icon">item1</span> <span
+						class="icon">item1</span>
+				</div>
+			</div>
+		</section> -->
+
+		<section class="section-two">
+			<div class="article-preview">
+				<div class="img-section">
+					<img alt="" src="../img/java.jpg">
+				</div>
+				<div class="text-section">
+					<hr>
+					<h2>Java is what I'm learning</h2>
+					<p>I think every programming language represents a way of
+						thinking, and I am interested in Java!</p>
+				</div>
+			</div>
+			<hr>
+			<div class="article-preview">
+				<div class="text-section">
+					<hr>
+					<h2>I like movies</h2>
+					<p>I like all kinds of movies, because I can experience a
+						different life in the movie.</p>
+				</div>
+				<div class="img-section">
+					<img alt="" src="../img/Up.jpg">
+				</div>
+			</div>
+			<hr>
+			<div class="article-preview">
+				<div class="img-section">
+					<img alt="" src="../img/relax.jpg">
+				</div>
+				<div class="text-section">
+					<hr>
+					<h2>Think about the meaning of life</h2>
+					<p>It is important to meditate on the meaning of life, because
+						it is meaningful to think about what to do.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section-three"></section>
+	</div>
+
+	<!-- footer通用的脚部 -->
+	<footer>
+		<ul class="share-group">
+			<li><a href="http://www.gxgeek.xin/">gxgeek</a></li>
+			<li><a href="#">友情链接</a></li>
+			<li><a href="#">友情链接</a></li>
+			<li><a href="#">友情链接</a></li>
+			<li><a href="#">友情链接</a></li>
+		</ul>
+		<div class="copy">&copy XL NOT PLUS SIZE</div>
+	</footer>
+	<!-- mask暗色层 -->
+	<div class="mask"></div>
+	<!-- 侧栏 -->
+	<div id="sidebar">
+		<ul>
+			<li><a href="#">item1</a></li>
+			<li><a href="#">item2</a></li>
+			<li><a href="#">item3</a></li>
+			<li><a href="#">item4</a></li>
+			<li><a href="#">item5</a></li>
+		</ul>
+	</div>
+	<!-- 返回顶部按钮 -->
+	<button class="back2top">Top</button>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/main.js"></script>
+</body>
+</html>
