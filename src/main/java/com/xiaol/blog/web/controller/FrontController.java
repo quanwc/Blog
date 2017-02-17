@@ -1,7 +1,14 @@
 package com.xiaol.blog.web.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.xiaol.blog.meta.Blogger;
 
 /**
  * @Description 前端页面控制器，包括login、projects、archives、tags、about
@@ -11,7 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class FrontController {
 
-	public String login() {
+	public String login(Blogger blogger, HttpServletRequest request) {
+		
+		Subject subject = SecurityUtils.getSubject();
+		UsernamePasswordToken token = new UsernamePasswordToken(blogger.getUsername(), blogger.getPassword());
+		// 之后再做加密处理
+		subject.login(token);
 		return null;
 	}
 
