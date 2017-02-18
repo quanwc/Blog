@@ -2,17 +2,20 @@ package com.xiaol.blog.realm;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-import com.xiaol.blog.service.impl.BloggerService;
+import com.xiaol.blog.meta.Blogger;
+import com.xiaol.blog.service.BloggerService;
 
 /**
- * @Description TODO
+ * @Description 用于博客主登录认证
  * @date 创建时间：2017年2月17日 下午11:29:36
  */
 public class BloggerRealm extends AuthorizingRealm {
@@ -33,7 +36,15 @@ public class BloggerRealm extends AuthorizingRealm {
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		String username = (String) token.getPrincipal();
-		return null;
+		Blogger blogger = bloggerService.getByUsername(username);
+		if (blogger != null) {
+			SecurityUtils.getSubject().getSession().setAttribute("blogger", blogger);// 把当前用户存到session中
+			AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(blogger.getUsername(), blogger.getPassword(),
+					"BloggerRealm");
+			return authcInfo;
+		} else {
+			return null;
+		}
 	}
 
 }

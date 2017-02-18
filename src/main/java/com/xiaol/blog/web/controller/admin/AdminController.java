@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 创建时间：2017年2月12日 下午11:11:06
  */
 @Controller
-@RequestMapping
+@RequestMapping("/admin")
 public class AdminController {
-
-
 
 }

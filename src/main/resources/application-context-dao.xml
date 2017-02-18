@@ -18,6 +18,10 @@
 	<!-- 配置sqlSessionFactory，用于获取session对象来执行sql语句 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		<!-- MyBatis配置文件 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		<!-- mapper映射文件所在位置 -->
+		<property name="mapperLocations" value="classpath:mappers/*Mapper.xml" />
 	</bean>
 
 	<!-- 设置数据源参数 -->
@@ -31,5 +35,8 @@
 
 	<!-- 加载数据库配置文件 -->
 	<context:property-placeholder location="classpath:db.properties" />
+
+	<!-- 定义Mapper Bean -->
+	<mybatis:scan base-package="com.xiaol.blog.mapper" />
 
 </beans>

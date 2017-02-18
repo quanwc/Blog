@@ -1,4 +1,4 @@
-package com.xiaol.blog.service.impl;
+package com.xiaol.blog.service;
 
 import com.xiaol.blog.meta.Blogger;
 
@@ -8,6 +8,6 @@ import com.xiaol.blog.meta.Blogger;
  */
 public interface BloggerService {
 
-	public Blogger getByUsername(String name);
+	public Blogger getByUsername(String username);
 
 }
