@@ -38,7 +38,6 @@ public class BloggerRealm extends AuthorizingRealm {
 		String username = (String) token.getPrincipal();
 		Blogger blogger = bloggerService.getByUsername(username);
 		if (blogger != null) {
-			SecurityUtils.getSubject().getSession().setAttribute("blogger", blogger);// 把当前用户存到session中
 			AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(blogger.getUsername(), blogger.getPassword(),
 					"BloggerRealm");
 			return authcInfo;
