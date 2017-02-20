@@ -9,9 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.xiaol.blog.common.JsonResult;
+import com.xiaol.blog.common.Result;
 import com.xiaol.blog.common.SysCode;
 import com.xiaol.blog.meta.Blogger;
 import com.xiaol.blog.service.BloggerService;
@@ -31,12 +30,13 @@ public class FrontController {
 	public String doLogin(@ModelAttribute Blogger blogger, HttpServletRequest request, HttpSession session,
 			ModelMap modelMap) {
 		// FIXME 暂时使用session，后期改用shiro
-		JsonResult result = new JsonResult();
+		Result result = new Result();
 		if (StringUtils.isEmpty(blogger.getUsername()) || StringUtils.isEmpty(blogger.getPassword())) {
 			result.setCode(SysCode.FAIL);
 			result.setMessage("Please check your username or password!");
 			modelMap.addAttribute("loginResult", result);
-			return "redirect:/login";
+			// return "redirect:/login";
+			return "forward:/login";
 		}
 		Blogger byUsername = bloggerService.getByUsername(blogger.getUsername());
 		if (byUsername != null && byUsername.getPassword().equals(blogger.getPassword())) {
@@ -46,18 +46,8 @@ public class FrontController {
 			result.setCode(SysCode.FAIL);
 			result.setMessage("Please check your username and password!");
 			request.setAttribute("loginResult", result);
-			return "forward:/login?result=fail";
+			return "forward:/login";
 		}
-	}
-
-	/**
-	 * @Description: 测试页
-	 * @author ShawnLin
-	 * @date 创建时间：2017年2月19日 下午5:27:37
-	 */
-	@RequestMapping("/index")
-	public String index() {
-		return "index";
 	}
 
 	/**
@@ -80,19 +70,23 @@ public class FrontController {
 		return "login";
 	}
 
-	public String getProjects() {
-		return null;
+	@RequestMapping("/projects")
+	public String projects() {
+		return "projects";
 	}
 
-	public String getArchives() {
-		return null;
+	@RequestMapping("/archives")
+	public String archives() {
+		return "archives";
 	}
 
-	public String getTags() {
-		return null;
+	@RequestMapping("/tags")
+	public String tags() {
+		return "tags";
 	}
 
+	@RequestMapping("/about")
 	public String about() {
-		return null;
+		return "about";
 	}
 }
