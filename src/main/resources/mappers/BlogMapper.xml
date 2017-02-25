@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaol.blog.mapper.BloggerMapper">
+
+	<resultMap type="com.xiaol.blog.meta.Blogger" id="BloggerMap">
+		<result property="id" column="id" />
+		<result property="title" column="username" />
+		<result property="password" column="password" />
+		<result property="avatar" column="avatar" />
+		<result property="github" column="github" />
+		<result property="email" column="email" />
+		<result property="md" column="md" />
+		<result property="html" column="html" />
+	</resultMap>
+
+	<select id="getByUsername" parameterType="String" resultMap="BloggerMap">
+		select id, username, password, headPortrait, github, email, md, html
+		from t_blogger where username=#{username}
+	</select>
+	
+	<update id="updateResume" parameterType="com.xiaol.blog.meta.Blogger">
+		update t_blogger set 
+			md=#{md},
+			html=#{html}
+	</update>
+</mapper>

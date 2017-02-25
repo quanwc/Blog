@@ -31,7 +31,7 @@
 						<li><strong>学历：</strong>深圳大学(2011-2015)本科</li>
 						<li><strong>工作年限：</strong>一年</li>
 						<li><strong>期望职位：</strong>Java开发</li>
-						<li><strong>期望城市：</strong>上海、深圳、杭州</li>
+						<li><strong>期望城市：</strong>深圳<!-- 、杭州、上海 --></li>
 						<li><strong>Github：</strong><a
 							href="https://github.com/Pickacat">https://github.com/Pickacat</a></li>
 					</ul>

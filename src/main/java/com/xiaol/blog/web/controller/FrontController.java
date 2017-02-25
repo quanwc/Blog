@@ -89,4 +89,9 @@ public class FrontController {
 	public String about() {
 		return "about";
 	}
+
+	@RequestMapping("/markdown")
+	public String markdown() {
+		return "markdown";
+	}
 }

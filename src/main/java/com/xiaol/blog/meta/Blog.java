@@ -7,8 +7,9 @@ package com.xiaol.blog.meta;
 public class Blog {
 	private int id;
 	private String title;// 标题
-	private String summary;// 概要
 	private String tags;// 分类标签
+	private String md;// 分类标签
+	private String html;// 分类标签
 
 	public int getId() {
 		return id;
@@ -24,14 +25,6 @@ public class Blog {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public String getSummary() {
-		return summary;
-	}
-
-	public void setSummary(String summary) {
-		this.summary = summary;
 	}
 
 	public String getTags() {

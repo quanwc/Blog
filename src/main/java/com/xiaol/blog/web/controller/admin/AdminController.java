@@ -10,10 +10,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-
-	@RequestMapping(path = { "/home", "/" })
-	public String adminHome() {
+	
+	@RequestMapping(path = { "/homeView", "/" })
+	public String homeView() {
 		return "/admin/home";
+	}
+
+	@RequestMapping(path = { "/blogAddView" })
+	public String blogAddView() {
+		return "/blog_add";
+	}
+	
+	@RequestMapping(path = { "/blogAdd" })
+	public String blogAdd() {
+		
+		return "/admin/";
+	}
+	
+	@RequestMapping(path = { "/projectView" })
+	public String projectView() {
+		return "/admin/project";
+	}
+	
+	@RequestMapping(path = { "/aboutView" })
+	public String aboutView() {
+		return "/admin/about";
 	}
 
 }
