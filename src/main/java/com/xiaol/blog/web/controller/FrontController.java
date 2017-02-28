@@ -70,23 +70,10 @@ public class FrontController {
 		return "login";
 	}
 
-	@RequestMapping("/projects")
-	public String projects() {
-		return "projects";
-	}
-
-	@RequestMapping("/archives")
-	public String archives() {
-		return "archives";
-	}
-
-	@RequestMapping("/tags")
-	public String tags() {
-		return "tags";
-	}
-
 	@RequestMapping("/about")
-	public String about() {
+	public String about(ModelMap root) {
+		Blogger blogger = bloggerService.findBlogger();
+		root.addAttribute("blogger", blogger);
 		return "about";
 	}
 

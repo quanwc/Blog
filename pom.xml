@@ -118,6 +118,20 @@
 			<version>1.2.5</version>
 		</dependency>
 
+		<!-- ehcache缓存MyBatis查询的数据 -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>2.6.5</version>
+		</dependency>
+		<!-- MyBatis与ehcache整合 -->
+		<dependency>
+			<groupId>org.mybatis.caches</groupId>
+			<artifactId>mybatis-ehcache</artifactId>
+			<version>1.0.3</version>
+		</dependency>
+
+
 	</dependencies>
 
 

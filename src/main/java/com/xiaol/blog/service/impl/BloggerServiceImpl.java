@@ -20,7 +20,17 @@ public class BloggerServiceImpl implements BloggerService {
 
 	@Override
 	public Blogger getByUsername(String username) {
-		return bloggerMapper.getByUsername(username);
+		return bloggerMapper.findByUsername(username);
+	}
+
+	@Override
+	public int updateAbout(Blogger blogger) {
+		return bloggerMapper.updateAbout(blogger);
+	}
+
+	@Override
+	public Blogger findBlogger() {
+		return bloggerMapper.findBlogger();
 	}
 
 }

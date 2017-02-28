@@ -4,7 +4,6 @@ import org.springframework.stereotype.Repository;
 
 import com.xiaol.blog.meta.Blogger;
 
-
 /**
  * @Description TODO
  * @date 创建时间：2017年2月18日 下午6:06:26
@@ -12,6 +11,10 @@ import com.xiaol.blog.meta.Blogger;
 @Repository
 public interface BloggerMapper {
 
-	public Blogger getByUsername(String username);
+	public Blogger findByUsername(String username);
+
+	public Blogger findBlogger();
+
+	public int updateAbout(Blogger blogger);
 
 }

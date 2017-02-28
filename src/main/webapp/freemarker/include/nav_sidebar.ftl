@@ -24,17 +24,6 @@
             </ol>
           </div>
           <div class="sidebar-module">
-            <h4>Tags</h4>
-            <ol class="list-unstyled">
-              <li><a href="/spring">Spring</a></li>
-              <li><a href="/struts">Struts</a></li>
-              <li><a href="/maven">Maven</a></li>
-              <li><a href="/mybatis">MyBatis</a></li>
-              <li><a href="/java">Java</a></li>
-              <li><a href="/servlet">Servlet</a></li>
-            </ol>
-          </div>
-          <div class="sidebar-module">
             <h4>Elsewhere</h4>
             <ol class="list-unstyled">
               <li><a href="https://github.com/Pickacat">GitHub</a></li>

@@ -2,27 +2,64 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xiaol.blog.mapper.BloggerMapper">
-
-	<resultMap type="com.xiaol.blog.meta.Blogger" id="BloggerMap">
-		<result property="id" column="id" />
-		<result property="title" column="username" />
-		<result property="password" column="password" />
-		<result property="avatar" column="avatar" />
-		<result property="github" column="github" />
-		<result property="email" column="email" />
+<!-- 命名空间 -->
+<mapper namespace="com.xiaol.blog.mapper.BlogMapper">
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache.class">
+		<property name="" value=""/>
+	</cache>
+	
+	<!-- resultMap：实体类与表的映射
+		 type：实体类的全路径
+		 id: 实体类与表的映射关系的唯一编号-->
+	<resultMap type="Blog" id="BlogMap">
+		<!-- id：映射主键
+			 result：映射非主键属性
+			 property：实体类的属性
+			 column：表的字段名
+			 timeout：超时时间，默认没有设置，由驱动器自己决定
+			  -->
+		<id property="id" column="blog_id" />
+		<result property="title" column="title" />
 		<result property="md" column="md" />
 		<result property="html" column="html" />
+		<result property="date" column="date" />
+		<result property="updateTime" column="updateTime" />
 	</resultMap>
 
-	<select id="getByUsername" parameterType="String" resultMap="BloggerMap">
-		select id, username, password, headPortrait, github, email, md, html
-		from t_blogger where username=#{username}
+	<!-- insert：插入语句的标签
+		 id：sql语句的唯一名称
+		 parameterType：入参类型，实体类的全路径名
+		 resultMap：返回类型
+		  -->
+	<insert id="addBlog" parameterType="Blog">
+		insert into t_blog(title, md, html, date, updateTime)
+		values(#{title}, #{md}, #{html}, #{date}, #{updateTime})
+	</insert>
+
+	<delete id="deleteBlogById" parameterType="int">
+		delete from t_blog where blog_id=#{id}
+	</delete>
+
+	<update id="updateBlog" parameterType="Blog">
+		update t_blog set
+			title=#{title},
+			md=#{md},
+			html=#{html},
+			updateTime=#{updateTime}
+		where blog_id=#{id}
+	</update>
+	
+	<select id="findBlogById" parameterType="int" resultMap="BlogMap">
+		select blog_id, title, md, html, date, updateTime from t_blog where blog_id=#{id} 
 	</select>
 	
-	<update id="updateResume" parameterType="com.xiaol.blog.meta.Blogger">
-		update t_blogger set 
-			md=#{md},
-			html=#{html}
-	</update>
+	<!-- 不分页查全部 -->
+	<select id="findAllBlog" parameterType="Blog" resultMap="BlogMap">
+		select blog_id, title, md, html, date, updateTime from t_blog 
+	</select>
+	
+	<!-- 分页查全部 -->
+	<!-- <select id="findAllBlog" parameterType="Blog" resultMap="BlogMap">
+		select * from t_blog limit #{start},#{size}
+	</select> -->
 </mapper>

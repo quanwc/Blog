@@ -15,7 +15,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/admin/homeView">Blogs</a></li>
-				<li><a href="/admin/projectView">Projects</a></li>
+				<li><a href="/admin/blogAddView">Write</a></li>
 				<li><a href="/admin/aboutView">About</a></li>
 				<li><a href="/admin/quit">Quit</a></li>
 			</ul>

@@ -15,7 +15,8 @@
 	<!-- 去扫描下面的包，找到对应的controller组件 -->
 	<context:component-scan base-package="com.xiaol.blog.web.controller" />
 
-	<!-- 打开spring的MessageConverter功能，用于将返回的数据转成对应的类型，例如json、xml，但是需要添加相关jar依赖 -->
+	<!-- 打开注解功能和spring的MessageConverter功能，用于将返回的数据转成对应的类型
+		 例如json、xml，但是需要添加相关jar依赖 -->
 	<mvc:annotation-driven />
 
 	<!-- 静态资源解析，包括js,css,img...，设置后不会被springmvc拦截 -->
@@ -24,6 +25,7 @@
 	<mvc:resources location="/img/" mapping="/img/**" />
 	<mvc:resources location="/js/" mapping="/js/**" />
 	<mvc:resources location="/lib/" mapping="/lib/**" />
+	<mvc:resources location="/lib/" mapping="/admin/lib/**" />
 	<mvc:resources location="/plugins/" mapping="/plugins/**" />
 
 	<!-- 配置freemarker信息 -->

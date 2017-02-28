@@ -77,20 +77,6 @@
     <script src="/js/md5.js"></script>
   	<!-- 登录js -->
     <script src="/js/login.js"></script>
-    <!-- 显示登录结果 -->
-<!-- 	<script type="text/javascript">
-		var code = $("#code").val();
-		if(code==400){
-			setTimeout(function() {
-				$.bootstrapGrowl("Please check your username or password!", {
-					type : 'danger',
-					align : 'center',
-					width : 'auto',
-				});
-			}, 0);
-		}
-	</script> -->
-
 
 </body>
 </html>

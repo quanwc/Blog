@@ -9,5 +9,9 @@ import com.xiaol.blog.meta.Blogger;
 public interface BloggerService {
 
 	public Blogger getByUsername(String username);
+	
+	public int updateAbout(Blogger blogger);
+	
+	public Blogger findBlogger();
 
 }

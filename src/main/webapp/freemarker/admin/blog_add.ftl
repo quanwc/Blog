@@ -28,12 +28,7 @@
                         <option selected="selected" value="">select preview area themes</option>
                     </select>
 					<!-- 表单提交区 -->
-					<form role="form" class="form-inline" name="blogForm" id="blogForm">
-						<!-- 博客标签 -->
-						<div class="form-group" id="tags">
-							<label for="tags" class="text-warning">Tags</label>
-							<input type="text" class="form-control" name="tags" placeholder="输入标签后请点击回车键" data-role="tagsinput" />
-						</div>
+					<form role="form" class="form-inline" name="blogForm" id="blogForm" method="POST">
 						<!-- 博客标题 -->
 						<div class="form-group">
 							<label for="title" class="text-warning">Title</label>
@@ -46,7 +41,7 @@
 						<!-- 提交按钮 -->
 	                    <div class="form-group">
 	                        <label for="add-blog-btn" class="text-warning">submit</label>
-	                        <input type="button" class="form-control jcala-input" id="add-blog-btn" value="save"/>
+	                        <input type="button" class="form-control" id="add-blog-btn" value="save"/>
 	                    </div>
 					</form>
                     <!-- markdown书写位置 -->
@@ -61,12 +56,7 @@
 	</div>
 		<#include "/include/admin_footer.ftl">
 		<!-- markdown -->
-		<!-- 		<script src="../dist/js/languages/en.js"></script> -->
-		<!-- 		<script src="../dist/js/languages/zh-tw.js"></script> -->
-		<script src="/js/jquery.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/editormd.js"></script>
-		<script src="/js/bootstrap-tagsinput.min.js"></script>
         <script type="text/javascript">
             var testEditor;
             
@@ -105,11 +95,11 @@
                 	// 加载markdown编辑器
                     testEditor = editormd("editormd", {
                         width: "100%",
-                        height: 740,
+                        height: 600,
                         path : '../lib/',
-                        theme : "dark",					//工具栏样式
-                        previewTheme : "dark",			//生成markdown文本样式
-                        editorTheme : "pastel-on-dark",	//markdown编写区样式
+                        theme : "default",					//工具栏样式
+                        previewTheme : "default",			//生成markdown文本样式
+                        editorTheme : "default",	//markdown编写区样式
                         //markdown : md, 			//预加载markdown文本
                         codeFold : true,
                         //syncScrolling : false,
@@ -156,20 +146,9 @@
 					$("#html").val(testEditor.getHTML());
 					// 把编写的markdown文本放入form表单
 					$("#md").val(testEditor.getMarkdown());
-					
-					//获取博客文章标签
-					var arr = $(".tag.label.label-info");
-					var tagsStr = "";		
-					arr.each(function(i){
-						if(i == (arr.length-1)){
-							tagsStr = tagsStr + $(this).text()
-						}else{
-							tagsStr = tagsStr + $(this).text() + ","
-						}
-					})
+					// 获取markdown文本和生成HTML
 // 					alert(testEditor.getHTML());
 // 					alert(testEditor.getMarkdown());
-// 					alert(tagsStr);
 					$("#blogForm").attr('action','/admin/blogAdd').submit();
 				})
             });

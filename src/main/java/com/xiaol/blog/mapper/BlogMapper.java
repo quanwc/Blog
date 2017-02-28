@@ -1,14 +1,17 @@
-package com.xiaol.blog.service;
+package com.xiaol.blog.mapper;
 
 import java.util.List;
+
+import org.springframework.stereotype.Repository;
 
 import com.xiaol.blog.meta.Blog;
 
 /**
- * @Description 博客文章服务类
- * @date 创建时间：2017年2月25日 下午9:36:30
+ * @Description TODO
+ * @date 创建时间：2017年2月18日 下午6:06:26
  */
-public interface BlogService {
+@Repository
+public interface BlogMapper {
 
 	public int addBlog(Blog blog);
 

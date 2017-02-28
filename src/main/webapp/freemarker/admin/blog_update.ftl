@@ -28,7 +28,14 @@
                         <option selected="selected" value="">select preview area themes</option>
                     </select>
 					<!-- 表单提交区 -->
-					<form role="form" class="form-inline" name="aboutForm" id="aboutForm" method="POST">
+					<form role="form" class="form-inline" name="blogForm" id="blogForm" method="POST">
+						<!-- 博客标题 -->
+						<div class="form-group">
+							<label for="title" class="text-warning">Title</label>
+							<input type="text" class="form-control" name="title" placeholder="请输入博客标题" value="${blog.title}"/>
+						</div>
+						<!-- 隐藏的博文id -->
+						<input type="hidden" name="id" value="${blog.id}"/>
 						<!-- 隐藏的md文本 -->
 						<input type="hidden" name="md" id="md"/>
 						<!-- 隐藏的md生成的html文本 -->
@@ -41,7 +48,7 @@
 					</form>
                     <!-- markdown书写位置 -->
 					<div id="editormd" class="row">
-						<textarea style="display: none;">${blogger.md}</textarea>
+						<textarea style="display: none;">${blog.md}</textarea>
 					</div>
 				</div><!-- 博客文章div-结束 -->
 			</div>
@@ -144,7 +151,7 @@
 					// 获取markdown文本和生成HTML
 // 					alert(testEditor.getHTML());
 // 					alert(testEditor.getMarkdown());
-					$("#aboutForm").attr('action','/admin/aboutUpdate').submit();
+					$("#blogForm").attr('action','/admin/blogUpdate').submit();
 				})
             });
         </script>

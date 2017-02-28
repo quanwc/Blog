@@ -7,73 +7,64 @@
 
 	<!-- 顶部导航系统 -->
 	<#include "/include/admin_nav_top.ftl">
-	
+    
     <div class="container-fluid">
       <div class="row">
-      <!-- 侧边栏 -->
-     <!--   <div class="col-sm-1 col-md-1 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="/admin/home">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Add blog</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-           	分组导航，暂时不需要
- 	      <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-          </ul> 
-        </div>-->
+        <div class="col-sm-6  col-md-12 main">
         
-         <!-- 右侧主体显示区 -->
-<!--         <div class="col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1 main"> -->
-        <div class="col-sm-12 col-md-12 main">
-
-		<!-- 博客列表展示 -->
           <h2 class="sub-header">Blog list</h2>
           <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Tags</th>
-                  <th>Date</th>
-                  <th>Options</th>
-                </tr>
-              </thead>
+            <#if blogList??>
+            <table class="table table-striped table-bordered">
               <tbody>
                 <tr>
-                  <td>Spring</td>
-                  <td>Spring</td>
-                  <td>2017-02-20</td>
-                  <td>update</td>
+                  <td><strong>#</strong></td>
+                  <td hidden>Id</td>
+                  <td><strong>Title</strong></td>
+                  <td><strong>CreateDate</strong></td>
+                  <td><strong>LastUpdate</strong></td>
+                  <td><strong>Options</strong></td>
                 </tr>
-                <tr>
-                  <td>Struts</td>
-                  <td>Struts</td>
-                  <td>2017-02-20</td>
-                  <td>update</td>
-                </tr>
-                <tr>
-                  <td>MyBatis</td>
-                  <td>MyBatis</td>
-                  <td>2017-02-20</td>
-                  <td>update</td>
-                </tr>
-                <tr>
-                  <td>Maven</td>
-                  <td>Maven</td>
-                  <td>2017-02-20</td>
-                  <td>update</td>
-                </tr>
+            <#list blogList as blog>
+              	<tr>
+					<td>${blog_index+1}</td>
+					<td hidden>${blog.id}</td>
+					<#if blog.title?length gt 40>
+						<td>${blog.title?substring(0,40)}</td>
+					<#else>
+						<td>${blog.title}</td>
+					</#if>
+					<td>${blog.date?string("yyyy-MM-dd")}</td>
+					<td>${blog.updateTime?datetime}</td>
+					<td><button onclick="deleteBlog(${blog.id})"><a href="#">Delete</a></button>&nbsp;&nbsp;
+						<button ><a href="/admin/blogUpdateView/${blog.id?c}">Update</a></button></td>
+				</tr>
+              </#list>
               </tbody>
             </table>
+            <#else>
+            <h4 >Blogs not found</h2>
+          	</#if>
           </div>
+          <!-- 隐藏表单，用于删除博文 -->
+          <form type="hidden" id="deleteForm" method="post" action="/admin/blogDelete">
+          	<input type="hidden" name="id" id="id" />
+          </form>
+          
         </div>
-        <!-- 右侧主体显示区-结束 -->
-        
       </div>
     </div>
-
+    
 	<#include "/include/admin_footer.ftl">
+	<script type="text/javascript">
+			// 删除方法
+			function deleteBlog(id){
+				var sure = confirm("确认要删除？");
+				// 1为确认，0为取消
+				if(sure==1){
+					$("#id").val(id);
+					$("#deleteForm").submit();
+				}
+			}
+	</script>
 </body></html>
