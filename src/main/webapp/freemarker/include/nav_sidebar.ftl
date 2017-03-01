@@ -6,29 +6,30 @@
             <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
           </div>
            -->
+          <#if homePager.dateGroup??>
           <div class="sidebar-module">
             <h4>Archives</h4>
             <ol class="list-unstyled">
-              <li><a href="./Blog Template for Bootstrap_files/Blog Template for Bootstrap.html">March 2014</a></li>
-              <li><a href="./Blog Template for Bootstrap_files/Blog Template for Bootstrap.html">February 2014</a></li>
-              <li><a href="./Blog Template for Bootstrap_files/Blog Template for Bootstrap.html">January 2014</a></li>
-              <li><a href="./Blog Template for Bootstrap_files/Blog Template for Bootstrap.html">December 2013</a></li>
-              <li><a href="./Blog Template for Bootstrap_files/Blog Template for Bootstrap.html">November 2013</a></li>
-              <li><a href="./Blog Template for Bootstrap_files/Blog Template for Bootstrap.html">October 2013</a></li>
-              <li><a href="./Blog Template for Bootstrap_files/Blog Template for Bootstrap.html">September 2013</a></li>
-              <li><a href="./Blog Template for Bootstrap_files/Blog Template for Bootstrap.html">August 2013</a></li>
-              <li><a href="./Blog Template for Bootstrap_files/Blog Template for Bootstrap.html">July 2013</a></li>
-              <li><a href="./Blog Template for Bootstrap_files/Blog Template for Bootstrap.html">June 2013</a></li>
-              <li><a href="./Blog Template for Bootstrap_files/Blog Template for Bootstrap.html">May 2013</a></li>
-              <li><a href="./Blog Template for Bootstrap_files/Blog Template for Bootstrap.html">April 2013</a></li>
+              <#list homePager.dateGroup as date>
+              <li><a href="/archives/${date}">${date}</a></li>
+              </#list>
             </ol>
           </div>
+          </#if>
           <div class="sidebar-module">
             <h4>Elsewhere</h4>
             <ol class="list-unstyled">
-              <li><a href="https://github.com/Pickacat">GitHub</a></li>
+              <li><a href="https://github.com/Pickacat" target="_blank">GitHub</a></li>
               <li><a href="mailto:13927425737@163.com">Email</a></li>
-<!--               <li><a href="./Blog Template for Bootstrap_files/Blog Template for Bootstrap.html">oschina</a></li> -->
+              <li><a href="https://my.oschina.net/Shawn1in/blog" target="_blank">OSChina</a></li>
             </ol>
           </div>
+<!--           <div class="sidebar-module">
+            <h4>Friendly Link</h4>
+            <ol class="list-unstyled">
+              <li><a href="https://github.com/Pickacat">GitHub</a></li>
+              <li><a href="mailto:13927425737@163.com">Email</a></li>
+            </ol>
+          </div> -->
+          
         </div><!-- /.blog-sidebar -->

@@ -40,7 +40,7 @@
 	<#if Request.loginResult?? >
 		<input type="hidden" name="code" id="code" value="${Request.loginResult.code}"/>
 	</#if>
-    <div class="container">
+    <div class="container" style="text-align: center;">
 		
       <form id="form-signin" class="form-signin" method="post" action="/dologin">
         <h2 class="form-signin-heading">Please sign in</h2>
@@ -55,16 +55,17 @@
         </div> -->
         <button class="btn btn-lg btn-primary btn-block" id="submit">Sign in</button>
 	  </form>
-	  
 	  <!-- 登录失败信息展示 -->
 	  <#if Request.loginResult?? >
 	  <label id="message_show">
 	  	<button type="button" class="close" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 		</button>
-			Please check your username or password!
+			${Request.loginResult.message}
+			<!-- Please check your username or password! -->
 	  </label>
 	  </#if>
+	  
 	</div> <!-- /container -->
 	
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
