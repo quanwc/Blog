@@ -3,6 +3,7 @@ package com.xiaol.blog.web.controller.admin;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -96,7 +97,6 @@ public class AdminController {
 	 */
 	@RequestMapping(path = { "/aboutView" }, method = RequestMethod.GET)
 	public String aboutView(ModelMap root) {
-		// 从后台查还是从session获取？
 		Blogger blogger = bloggerService.findBlogger();
 		root.addAttribute("blogger", blogger);
 		return "/admin/about";
@@ -110,6 +110,21 @@ public class AdminController {
 	public String aboutUpdate(@ModelAttribute Blogger blogger) {
 		bloggerService.updateAbout(blogger);
 		return "forward:/about";
+	}
+
+	/**
+	 * @Description: 退出后台
+	 * @date 创建时间：2017年3月1日 上午12:19:10
+	 */
+	@RequestMapping(path = { "/quit" }, method = RequestMethod.GET)
+	public String quit(HttpSession session) {
+		/*
+		 * 不需要手动清除session，shiro框架会帮我们做。如果手动清除。
+		 * 会报错：java.lang.IllegalStateException: getAttribute: Session already
+		 * invalidated
+		 */
+		// session.invalidate();
+		return "forward:/home";
 	}
 
 }

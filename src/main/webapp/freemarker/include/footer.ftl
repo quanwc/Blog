@@ -1,4 +1,4 @@
-    <footer class="blog-footer">
+    <footer class="blog-footer" style="position:fiexd;bottom:0px;width:100%;">
       <p>
         <a href="#blog-masthead">Back to top</a>
       </p>

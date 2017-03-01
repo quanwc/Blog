@@ -21,12 +21,17 @@
 
 	<!-- 静态资源解析，包括js,css,img...，设置后不会被springmvc拦截 -->
 	<mvc:resources location="/css/" mapping="/css/**" />
+	<mvc:resources location="/css/" mapping="/admin/css/**" />
 	<mvc:resources location="/fonts/" mapping="/fonts/**" />
+	<mvc:resources location="/fonts/" mapping="/admin/fonts/**" />
 	<mvc:resources location="/img/" mapping="/img/**" />
+	<mvc:resources location="/img/" mapping="/admin/img/**" />
 	<mvc:resources location="/js/" mapping="/js/**" />
+	<mvc:resources location="/js/" mapping="/admin/js/**" />
 	<mvc:resources location="/lib/" mapping="/lib/**" />
 	<mvc:resources location="/lib/" mapping="/admin/lib/**" />
 	<mvc:resources location="/plugins/" mapping="/plugins/**" />
+	<mvc:resources location="/plugins/" mapping="/admin/plugins/**" />
 
 	<!-- 配置freemarker信息 -->
 	<bean id="freemarkerConfig"

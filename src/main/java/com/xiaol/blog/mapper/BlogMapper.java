@@ -23,4 +23,14 @@ public interface BlogMapper {
 
 	public List<Blog> findAllBlog();
 
+	public Blog findLastCreateBlog();
+
+	public Blog findPreBlog(int id);
+
+	public Blog findNextBlog(int id);
+
+	public List<String> findDateGroup();
+
+	public List<Blog> findBlogListByDate(String date);
+
 }

@@ -2,6 +2,8 @@ package com.xiaol.blog.service;
 
 import java.util.List;
 
+import com.xiaol.blog.common.ArchivePager;
+import com.xiaol.blog.common.HomePager;
 import com.xiaol.blog.meta.Blog;
 
 /**
@@ -19,5 +21,15 @@ public interface BlogService {
 	public Blog findBlogById(int id);
 
 	public List<Blog> findAllBlog();
+	
+	public Blog findLastCreateBlog();
+	
+	public HomePager findHomePager();
+	
+	public HomePager findHomePager(Integer id);
+	
+	public ArchivePager findArchivePager();
+
+	public ArchivePager findArchivePager(String date);
 
 }
